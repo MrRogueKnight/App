@@ -1,112 +1,54 @@
-# MiniKit Template
+# Meme NFT Farcaster Mini App
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-onchain --mini`](), configured with:
+A super-fast, meme-friendly NFT minting mini app for Farcaster, built with React, Vite, and ethers.js.
 
-- [MiniKit](https://docs.base.org/builderkits/minikit/overview)
-- [OnchainKit](https://www.base.org/builders/onchainkit)
-- [Tailwind CSS](https://tailwindcss.com)
-- [Next.js](https://nextjs.org/docs)
+## Features
+- Mint meme NFTs (ERC-1155) on Base for $0.25 in ETH
+- Add new memes (owner free, others pay $0.25)
+- Max 100 supply per meme
+- 5% royalties to owner
+- Ultra-fast, mobile-first, iframe-safe
 
-## Getting Started
+## Setup
 
-1. Install dependencies:
-```bash
-npm install
-# or
-yarn install
-# or
-pnpm install
-# or
-bun install
-```
+1. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-2. Verify environment variables, these will be set up by the `npx create-onchain --mini` command:
+2. **Configure contract:**
+   - Deploy the `MemeNFT1155.sol` contract to Base (see below)
+   - Set your contract address and Chainlink price feed address in `src/utils/contract.js`
 
-You can regenerate the FARCASTER Account Association environment variables by running `npx create-onchain --manifest` in your project directory.
+3. **Run locally:**
+   ```bash
+   npm run dev
+   ```
 
-The environment variables enable the following features:
+4. **Build for production:**
+   ```bash
+   npm run build
+   ```
 
-- Frame metadata - Sets up the Frame Embed that will be shown when you cast your frame
-- Account association - Allows users to add your frame to their account, enables notifications
-- Redis API keys - Enable Webhooks and background notifications for your application by storing users notification details
+5. **Preview production build:**
+   ```bash
+   npm run preview
+   ```
 
-```bash
-# Shared/OnchainKit variables
-NEXT_PUBLIC_ONCHAINKIT_PROJECT_NAME=
-NEXT_PUBLIC_URL=
-NEXT_PUBLIC_ICON_URL=
-NEXT_PUBLIC_ONCHAINKIT_API_KEY=
+## Contract Deployment
+- Deploy `MemeNFT1155.sol` to Base using Remix or Hardhat.
+- Use the Base ETH/USD Chainlink price feed address (see Chainlink docs for latest address).
+- The owner address is hardcoded to `0x58ad103D0C0E69250CaC89Ddf0BDaD396914C411`.
 
-# Frame metadata
-FARCASTER_HEADER=
-FARCASTER_PAYLOAD=
-FARCASTER_SIGNATURE=
-NEXT_PUBLIC_APP_ICON=
-NEXT_PUBLIC_APP_SUBTITLE=
-NEXT_PUBLIC_APP_DESCRIPTION=
-NEXT_PUBLIC_APP_SPLASH_IMAGE=
-NEXT_PUBLIC_SPLASH_BACKGROUND_COLOR=
-NEXT_PUBLIC_APP_PRIMARY_CATEGORY=
-NEXT_PUBLIC_APP_HERO_IMAGE=
-NEXT_PUBLIC_APP_TAGLINE=
-NEXT_PUBLIC_APP_OG_TITLE=
-NEXT_PUBLIC_APP_OG_DESCRIPTION=
-NEXT_PUBLIC_APP_OG_IMAGE=
-
-# Redis config
-REDIS_URL=
-REDIS_TOKEN=
-```
-
-3. Start the development server:
-```bash
-npm run dev
-```
-
-## Template Features
-
-### Frame Configuration
-- `.well-known/farcaster.json` endpoint configured for Frame metadata and account association
-- Frame metadata automatically added to page headers in `layout.tsx`
-
-### Background Notifications
-- Redis-backed notification system using Upstash
-- Ready-to-use notification endpoints in `api/notify` and `api/webhook`
-- Notification client utilities in `lib/notification-client.ts`
-
-### Theming
-- Custom theme defined in `theme.css` with OnchainKit variables
-- Pixel font integration with Pixelify Sans
-- Dark/light mode support through OnchainKit
-
-### MiniKit Provider
-The app is wrapped with `MiniKitProvider` in `providers.tsx`, configured with:
-- OnchainKit integration
-- Access to Frames context
-- Sets up Wagmi Connectors
-- Sets up Frame SDK listeners
-- Applies Safe Area Insets
+## Farcaster Integration
+- Deploy your frontend (e.g., Vercel, Netlify).
+- Share your app link in a Farcaster cast or channel.
+- The app is optimized for iframe embedding and mobile use.
 
 ## Customization
+- Update meme styles, colors, and branding in `src/App.css` and components.
+- Your Farcaster handle (MrRogueKnight) is shown in the UI for trust.
 
-To get started building your own frame, follow these steps:
+---
 
-1. Remove the DemoComponents:
-   - Delete `components/DemoComponents.tsx`
-   - Remove demo-related imports from `page.tsx`
-
-2. Start building your Frame:
-   - Modify `page.tsx` to create your Frame UI
-   - Update theme variables in `theme.css`
-   - Adjust MiniKit configuration in `providers.tsx`
-
-3. Add your frame to your account:
-   - Cast your frame to see it in action
-   - Share your frame with others to start building your community
-
-## Learn More
-
-- [MiniKit Documentation](https://docs.base.org/builderkits/minikit/overview)
-- [OnchainKit Documentation](https://docs.base.org/builderkits/onchainkit/getting-started)
-- [Next.js Documentation](https://nextjs.org/docs)
-- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
+Enjoy your fast, meme-powered Farcaster mini app! 
